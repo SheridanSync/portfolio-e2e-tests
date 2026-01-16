@@ -70,6 +70,15 @@ export class HomePage extends BasePage {
   async hasSkill(categoryName: string, skillName: string): Promise<boolean> {
     const card = this.getTechStackCard(categoryName);
     const skill = card.getByText(skillName);
-    return await skill.isVisible();
+
+    // Scrollujemy do elementu, aby wyzwolić animację (karty mają początkowo opacity: 0)
+    await skill.scrollIntoViewIfNeeded();
+
+    try {
+      await skill.waitFor({ state: 'visible' });
+      return true;
+    } catch {
+      return false;
+    }
   }
 }
