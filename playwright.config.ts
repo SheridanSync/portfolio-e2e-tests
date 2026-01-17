@@ -6,7 +6,7 @@ export default defineConfig({
   reporter: 'html',
   use: {
     // WAŻNE: To jest adres, pod którym GitHub Actions uruchomi Twoją aplikację
-    baseURL: 'http://localhost:3001', 
+    baseURL: 'http://localhost:3000', 
     trace: 'on-first-retry',
   },
   projects: [
